@@ -1,0 +1,32 @@
+/* custom-theme.css */
+
+/* Base theme styles */
+.ag-theme-custom .ag-root {
+    --ag-header-background-color: #f5f5f5;
+    --ag-header-font-size: 14px;
+    --ag-row-hover-color: #e8f5e9;
+    --ag-font-size: 14px;
+    --ag-cell-border-color: #ddd;
+  }
+  
+  /* Header styles */
+  .ag-theme-custom .ag-header-cell {
+    background-color: #009688;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  /* Row styles */
+  .ag-theme-custom .ag-row {
+    background-color: #ffffff;
+  }
+  
+  .ag-theme-custom .ag-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Apply custom styles to specific elements if needed */
+  .ag-theme-custom .ag-cell {
+    border: 1px solid var(--ag-cell-border-color);
+  }
+  
