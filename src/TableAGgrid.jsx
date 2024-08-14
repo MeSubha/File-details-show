@@ -7,7 +7,7 @@ function createData(name, size, mDate) {
     return { name, size, mDate };
 }
 
-function BasicTable({ files }) {
+function BasicTable({ files, onDelete }) {
     // Prepare rows for AG Grid
     const rowData = files.map(file => createData(file.name, file.size / 1000, file.lastModifiedDate));
 
@@ -15,7 +15,15 @@ function BasicTable({ files }) {
     const columnDefs = [
         { headerName: 'File name', field: 'name' },
         { headerName: 'Size (KB)', field: 'size', type: 'numberColumn' },
-        { headerName: 'Last modified', field: 'mDate', valueFormatter: params => new Date(params.value).toLocaleString() }
+        { headerName: 'Last modified', field: 'mDate', valueFormatter: params => new Date(params.value).toLocaleString() },
+        {
+            headerName: 'Action',
+            cellRenderer: params => (
+                <button onClick={() => onDelete(params.data.name)} style={{ height: '28px', width: '80px',fontSize: '14px',padding:'0', margin:'0' }}>
+                    Delete
+                </button>
+            ),
+        }
     ];
 
     return (

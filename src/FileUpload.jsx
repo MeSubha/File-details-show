@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import BasicTable from "./TableAGgrid";
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementByAmount } from "./counter/counterSlice";
-import { addItem } from "./counter/arrayStore";
+import { incrementByAmount ,decrement} from "./counter/counterSlice";
+import { addItem,removeItem } from "./counter/arrayStore";
 
 const FileUpload = () => {
     const count = useSelector((state) => state.counter.value);
@@ -10,16 +10,11 @@ const FileUpload = () => {
     const dispatch = useDispatch();
     const [newFiles, setnewFiles] = useState([]);
     const [showTable, setShowTable] = useState(false);
-    // console.log(array,count)
 
     // Handle file selection
     const handleFileChange = (event) => {
         const filesArray = Array.from(event.target.files); // Ensure this is always an array
         setnewFiles(filesArray);
-        // dispatch(addItem(filesArray));
-        // console.log(selectedFiles)
-        // setSelectedFiles(filesArray);
-        // setShowTable(false); // Hide the table when new files are selected
     };
 
     // Handle file upload
@@ -35,9 +30,10 @@ const FileUpload = () => {
             console.log('No files selected');
         }
     };
-    const deleteFile = () =>{
-
-    }
+    const deleteFile = (fileName) =>{
+        dispatch(removeItem(fileName));
+        dispatch(decrement());
+    };
 
     return (
         <>
@@ -47,7 +43,7 @@ const FileUpload = () => {
 
             {/* Conditionally render BasicTable and pass props */}
             {showTable && selectedFiles.length > 0 && (
-                <BasicTable files={selectedFiles} />
+                <BasicTable files={selectedFiles} onDelete={deleteFile} />
             )}
         </>
     );

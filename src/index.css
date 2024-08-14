@@ -15,13 +15,15 @@ code {
 .heading {
   color: rgb(171, 0, 187);
 }
-h1{
-  color: rgb(119, 170, 0);
+h2{
+  color: #195047;
+  /* color:rgb(255, 255, 255) ; */
+  padding: 10px;
 }
 button{
   background-color: #195047;
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -38,10 +40,6 @@ input{
   border-radius: 5px;
   margin: 8px;
   color: white;
-
-
-
-
 }
 
 /* body{

@@ -4,7 +4,7 @@ const Navbar = ()=>{
     const count = useSelector((state) => state.counter.value);
 
     return(
-        <h2>Total file count is {count}</h2>
+        <h2>Total file count: {count}</h2>
     )
 };
 

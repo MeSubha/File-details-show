@@ -12,13 +12,13 @@ export const arrayStore = createSlice({
     // state.items += action.payload;
     state.items = state.items.concat(action.payload);
    },
-   clearItems: (state) => {
-    state.items = []; // Clears the array
+   removeItem: (state, action) => {
+    state.items = state.items.filter(item => item.name !== action.payload);
   },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {addItem, clearItems} = arrayStore.actions
+export const {addItem, removeItem} = arrayStore.actions
 
 export default arrayStore.reducer
